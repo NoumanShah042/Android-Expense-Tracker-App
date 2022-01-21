@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/id_search"
+        android:icon="@drawable/ic_search_24"
+        android:title="Seacrh"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_image"
+        android:icon="@drawable/ic_add"
+        android:title="round"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/id_share"
+        android:title="Share"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/id_about"
+        android:title="About"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/id_Exit"
+        android:title="Exit"
+        app:showAsAction="never" />
+</menu>
+
+    <!--
+
+     <item
+        android:id="@+id/id_setting"
+        android:icon="@drawable/ic_settings_24"
+        android:title="setting"
+        app:showAsAction="ifRoom" />
+
+         case R.id.id_setting:
+                Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
+                break;
+
+    https://material.io/components/app-bars-top#anatomy
+
+     title : name for items in dropdown or
+             for icons, title shows if we hold that icon
+
+
+      extendable menu
+
+      showAsAction attributes:
+           never : never show it as icon
+           always: always show as icon
+           ifRoom : show as icon if space available
+           withText :  show it as text ( show it in extendable menu ,   similar to never )
+           collapseActionView  ; for dynamic views in menu_bar
+
+
+
+    -->
