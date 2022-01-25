@@ -1,0 +1,37 @@
+private RecyclerView categoryRecyclerView;
+    private ArrayList<Category> categoryModalArrayList;
+
+
+
+ categoryModalArrayList = db.getALlCategories();
+//        for (Category contact : categoryModalArrayList) {
+//
+//            Log.d("tag", contact.toString());
+//        }
+//        categoryRecyclerView = findViewById(R.id.recyclerview);
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL, false);
+//        categoryRecyclerView.setLayoutManager(linearLayoutManager);
+//
+//        CategoryRVAdapter categoryRVAdapter = new CategoryRVAdapter(categoryModalArrayList, MainActivity.this);
+//        categoryRecyclerView.setAdapter(categoryRVAdapter);
+
+
+
+<color name="btnbg">#2196F3</color>
+    <color name="headercolor">#1C94F3</color>
+    <color name="cardbg">#E8EEF3</color>
+
+
+****************
+
+
+
+//            StringBuilder  str= new StringBuilder();
+//            for(Category c: array){
+//                str.append(c.toString());
+//            }
+
+//        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+//        builder1.setMessage(str);
+//        AlertDialog alert11 = builder1.create();
+//        alert11.show();

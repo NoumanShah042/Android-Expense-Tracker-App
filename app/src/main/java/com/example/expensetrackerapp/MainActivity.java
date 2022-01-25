@@ -2,8 +2,11 @@ package com.example.expensetrackerapp;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -12,13 +15,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.expensetrackerapp.Adapters.CategoryRVAdapter;
 import com.example.expensetrackerapp.DatabaseHandler.DBHelper;
 import com.example.expensetrackerapp.Model.Category;
 import com.example.expensetrackerapp.Model.Expense;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
+    private ArrayList<Category> courseModalArrayList;
+    private DBHelper db;
+    private RecyclerView categoryRecyclerView;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -30,16 +39,19 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         DBHelper db = new DBHelper(MainActivity.this);
-//        String name, int category_id , String description, int cost
-        Expense e= new  Expense("Petrol", 1, "Desc", 300);
-        Log.d("tag",e.toString());
-//        Category c = new Category("Food", 300);
-//        db.addCategory(c);
-//        db.getALlCategories();
+//        db.addCategory(new Category("Food", 300));
+//        db.addCategory(new Category("Product", 1000));
+//        db.addCategory(new Category("Cloth", 1300));
 
+        db = new DBHelper(MainActivity.this);
+        courseModalArrayList = db.getALlCategories();
+        categoryRecyclerView = findViewById(R.id.idRVCategory);
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL, false);
+        categoryRecyclerView.setLayoutManager(linearLayoutManager);
 
-
+        CategoryRVAdapter categoryRVAdapter = new CategoryRVAdapter(this.courseModalArrayList, MainActivity.this);
+        categoryRecyclerView.setAdapter(categoryRVAdapter);
     }
 
     @Override

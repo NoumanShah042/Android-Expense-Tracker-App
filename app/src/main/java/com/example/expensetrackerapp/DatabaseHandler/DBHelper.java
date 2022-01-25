@@ -89,8 +89,8 @@ public class DBHelper extends SQLiteOpenHelper {
 //        onCreate(db);
     }
 
-    public List<Category> getALlCategories(){
-        List<Category> categoryList = new ArrayList<>();
+    public ArrayList<Category> getALlCategories(){
+        ArrayList<Category> categoryList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
         // Generate the query to read from the database
@@ -103,7 +103,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 Category category = new Category();
                 category.setId(Integer.parseInt(cursor.getString(0)));
                 category.setName(cursor.getString(1));
-                category.setCost(Integer.parseInt(cursor.getString(0)));
+                category.setCost(Integer.parseInt(cursor.getString(2)));
                 categoryList.add(category);
             } while (cursor.moveToNext());
         }

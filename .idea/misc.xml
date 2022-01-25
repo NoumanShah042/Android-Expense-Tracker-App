@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/D Data/Android Development/Projects/ExpenseTrackerApp/app/src/main/res/drawable/background_border.xml" value="0.20260416666666667" />
         <entry key="..\:/D Data/Android Development/Projects/ExpenseTrackerApp/app/src/main/res/drawable/ic_menu_24.xml" value="0.20260416666666667" />
+        <entry key="..\:/D Data/Android Development/Projects/ExpenseTrackerApp/app/src/main/res/layout/activity_category.xml" value="0.18645833333333334" />
         <entry key="..\:/D Data/Android Development/Projects/ExpenseTrackerApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/D Data/Android Development/Projects/ExpenseTrackerApp/app/src/main/res/layout/category_row.xml" value="0.33" />
         <entry key="..\:/D Data/Android Development/Projects/ExpenseTrackerApp/app/src/main/res/menu/toolbarmenu.xml" value="0.18645833333333334" />
       </map>
     </option>
