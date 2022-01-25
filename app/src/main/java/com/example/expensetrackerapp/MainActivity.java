@@ -39,19 +39,34 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         DBHelper db = new DBHelper(MainActivity.this);
-//        db.addCategory(new Category("Food", 300));
-//        db.addCategory(new Category("Product", 1000));
-//        db.addCategory(new Category("Cloth", 1300));
 
         db = new DBHelper(MainActivity.this);
+
+        // to show categories list in recyclerview
         courseModalArrayList = db.getALlCategories();
         categoryRecyclerView = findViewById(R.id.idRVCategory);
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL, false);
         categoryRecyclerView.setLayoutManager(linearLayoutManager);
-
         CategoryRVAdapter categoryRVAdapter = new CategoryRVAdapter(this.courseModalArrayList, MainActivity.this);
         categoryRecyclerView.setAdapter(categoryRVAdapter);
+
+        //  expenses
+
+//        db.addExpense(new Expense("Burger", 2, "burger", 200));
+//        db.addExpense(new Expense("Pizza", 2, "Pizza", 300));
+
+//        displaying expenses as model
+//        ArrayList<Expense> expenses = db.getExpensesByCategory(1);
+//        StringBuilder str = new StringBuilder();
+//        for (Expense c : expenses) {
+//            str.append(c.toString());
+//            Log.d("tag", c.toString());
+//        }
+//        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+//        builder1.setMessage(str);
+//        AlertDialog alert11 = builder1.create();
+//        alert11.show();
+
     }
 
     @Override

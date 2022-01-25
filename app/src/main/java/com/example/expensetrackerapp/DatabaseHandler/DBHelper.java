@@ -7,10 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
+import com.example.expensetrackerapp.MainActivity;
 import com.example.expensetrackerapp.Model.Category;
 import com.example.expensetrackerapp.Model.Expense;
 
@@ -50,23 +52,21 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CATEGORY_TABLE);
         db.execSQL(EXPENSE_TABLE);
     }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void addExpense(Expense expense){
-//        KEY_EXPENSE_ID ,
-//        String KEY_EXPENSE_NAME ,
-//        String KEY_EXPENSE_CATEGORY_ID
-//        String KEY_EXPENSE_DESCRIPTION
-//        String KEY_EXPENSE_DATE
-//        String KEY_EXPENSE_COST
-        SQLiteDatabase db = this .getWritableDatabase();
+    public void addExpense(Expense expense) {
+        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(Params.KEY_EXPENSE_NAME, expense.getName());
         values.put(Params.KEY_EXPENSE_CATEGORY_ID, expense.getCategory_id());
         values.put(Params.KEY_EXPENSE_DESCRIPTION, expense.getDescription());
-        values.put(Params.KEY_EXPENSE_DATE,expense.getDateTime());
+        values.put(Params.KEY_EXPENSE_DATE, expense.getDateTime());
         values.put(Params.KEY_EXPENSE_COST, expense.getCost());
-
+        db.insert(Params.TABLE_EXPENSE, null, values);
+        db.close();
+        Log.d("tag", "inserted successfully");
     }
+
     public void addCategory(Category category) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -89,7 +89,7 @@ public class DBHelper extends SQLiteOpenHelper {
 //        onCreate(db);
     }
 
-    public ArrayList<Category> getALlCategories(){
+    public ArrayList<Category> getALlCategories() {
         ArrayList<Category> categoryList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -112,5 +112,32 @@ public class DBHelper extends SQLiteOpenHelper {
 //            Log.d("tag", c.toString());
 //        }
         return categoryList;
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public ArrayList<Expense> getExpensesByCategory(int category_id) {
+        ArrayList<Expense> expensesList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String id = Integer.toString(category_id);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + Params.TABLE_EXPENSE + " where category_id = ? ", new String[]{id});
+
+        //Loop through now
+        if (cursor.moveToFirst()) {
+            do {
+                Expense expense = new Expense();
+                expense.setId(Integer.parseInt(cursor.getString(0)));
+                expense.setName(cursor.getString(1));
+                expense.setCategory_id(Integer.parseInt(cursor.getString(2)));
+                expense.setDateTime(cursor.getString(3));
+                expense.setDescription(cursor.getString(4));
+                expense.setCost(Integer.parseInt(cursor.getString(5)));
+                expensesList.add(expense);
+
+            } while (cursor.moveToNext());
+        }
+
+        return expensesList;
     }
 }
